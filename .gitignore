@@ -2,3 +2,4 @@ three.js
 metabrowser/node_modules
 metabrowser/dist
 *.iml
+.idea
