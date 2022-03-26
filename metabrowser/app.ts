@@ -1,25 +1,42 @@
-// Sample floating cube.
-import * as THREE from 'three';
+import {parse} from "./parser/parser";
+import {render} from "./renderer/renderer";
 
-const camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.01, 10 );
-camera.position.z = 1;
+const world = `
+<world>
+    <rectangle  
+        size=".2, .2, .2"
+        rotation="1, 1, 1"
+        coordinates="-0.7"
+    />
+    <rectangle  
+        size=".2, .2, .2"
+        rotation="1, 1, 1"
+        coordinates="0.7"
+    />
+    <rectangle  
+        size=".2, .2, .2"
+        rotation=".5, 1, 1"
+        coordinates="0.7, .4"
+    />
+    <rectangle  
+        size=".3, .4, .2"
+        rotation=".5, 1, 1"
+        coordinates="0.7, -.1"
+    />
+    <rectangle  
+        size=".6, .4, .2"
+        rotation=".3, 1, 1"
+        coordinates="0.7, -.15"
+    />
+    <rectangle  
+        size="1.3, 2, .2"
+        rotation=".5, 1, 1"
+        coordinates="0.7, -.1"
+    />
+</world>
+`
 
-const scene = new THREE.Scene();
-const geometry = new THREE.BoxGeometry( 0.2, 0.2, 0.2 );
-const material = new THREE.MeshNormalMaterial();
-const mesh = new THREE.Mesh( geometry, material );
+const WOM = parse(world)
+render(WOM)
 
-scene.add( mesh );
-
-const renderer = new THREE.WebGLRenderer( { antialias: true } );
-renderer.setSize( window.innerWidth, window.innerHeight );
-renderer.setAnimationLoop( animation );
-document.body.appendChild( renderer.domElement );
-
-// animation
-function animation( time ) {
-  mesh.rotation.x = time / 2000;
-  mesh.rotation.y = time / 1000;
-
-  renderer.render( scene, camera );
-}
+console.log(WOM)

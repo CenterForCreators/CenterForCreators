@@ -23,5 +23,8 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin()
-  ]
+  ],
+  devServer: {
+    static: './dist',
+  },
 };
