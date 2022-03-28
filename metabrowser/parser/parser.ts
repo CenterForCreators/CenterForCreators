@@ -1,31 +1,43 @@
-import {Rectangle} from "../WOM/Element";
 import {XMLParser} from 'fast-xml-parser'
 import {isObject, isArray} from '../utils'
+import {parse as parseWorld} from "./xml/World";
+import {parse as parseRectangle} from "./xml/Rectangle";
+import {parse as parseSkybox} from "./xml/Skybox";
+import {IWorld} from "../WOM/wom";
 
-export function parse(world: string): Array<Rectangle> {
+// parseWml: Take a World Markup Language string and convert to an initialized World object.
+export function parseWml(worldString: string): IWorld {
   const parser = new XMLParser({
     ignoreAttributes : false,
     allowBooleanAttributes: true,
   });
-  const worldObject = parser.parse(world);
-  const root = worldObject["world"]
-  let WOM: Array<Rectangle> = []
 
-  let rectangles = []
+  const worldObjectXml = parser.parse(worldString);
+  const worldXml = worldObjectXml["world"]
 
-  if (isObject(root.rectangle)) {
-    rectangles = [root.rectangle]
+  // parse world root node
+  let world = parseWorld(worldXml)
+
+  // This needs to be more fluid for new types.
+  let xmlRectangles = []
+
+  if (isObject(worldXml.rectangle)) {
+    xmlRectangles = [worldXml.rectangle]
   }
 
-  if (isArray(root.rectangle)) {
-    rectangles = root.rectangle
+  if (isArray(worldXml.rectangle)) {
+    xmlRectangles = worldXml.rectangle
   }
 
-  for (let i = 0; i < rectangles.length; i++) {
-    let xmlObject = rectangles[i]
-    let rectangle = new Rectangle().parseFromXmlObject(xmlObject)
-    WOM.push(rectangle)
+  for (let i = 0; i < xmlRectangles.length; i++) {
+    let xmlObject = xmlRectangles[i]
+    world.rectangles.push(parseRectangle(xmlObject))
   }
 
-  return WOM
+  // skybox
+  if (isObject(worldXml.skybox)) {
+    world.skybox = parseSkybox(worldXml.skybox)
+  }
+
+  return world
 }

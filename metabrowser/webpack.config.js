@@ -25,6 +25,9 @@ module.exports = {
     new HtmlWebpackPlugin()
   ],
   devServer: {
-    static: './dist',
+    static: {
+      directory: path.join(__dirname, 'examples'),
+      publicPath: '/examples',
+    },
   },
 };
