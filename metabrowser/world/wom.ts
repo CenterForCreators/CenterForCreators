@@ -1,6 +1,5 @@
-import {IRectangle} from "./Rectangle";
-import {Skybox} from "./Skybox";
-
+import {IRectangle} from "./rectangle";
+import {Skybox} from "./skybox";
 
 // The global object - equivalent to "window" in browsers, or "process" in node
 export interface IGlobal {

@@ -2,7 +2,7 @@ export interface Element {
   type: string;
 }
 
-export interface Coordinates {
+export interface Position {
   x: number;
   y: number;
   z: number;

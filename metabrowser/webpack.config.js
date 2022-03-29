@@ -22,12 +22,17 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({
+      template: 'index.ejs'
+    })
   ],
   devServer: {
-    static: {
+    static: [{
       directory: path.join(__dirname, 'examples'),
       publicPath: '/examples',
-    },
+    }, {
+      directory: path.join(__dirname, 'assets'),
+      publicPath: '/assets',
+    }],
   },
 };

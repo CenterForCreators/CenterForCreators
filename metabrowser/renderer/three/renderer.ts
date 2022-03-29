@@ -1,30 +1,33 @@
 // Sample floating cube.
 import * as THREE from 'three';
-import { OrbitControls as Controls  } from '../controls/OrbitControls.js';
-import {IGlobal} from "../WOM/wom";
+import { OrbitControls as Controls  } from '../../controls/OrbitControls.js';
+import {IGlobal} from "../../world/wom";
 import renderSkybox from './skybox'
-
-const camera = new THREE.PerspectiveCamera(
-  55,
-  window.innerWidth / window.innerHeight,
-  0.01,
-  10000,
-);
-camera.position.set(0, 0, -2);
-
-const scene = new THREE.Scene();
-const renderer = new THREE.WebGLRenderer( { antialias: true, alpha: false } );
-renderer.setSize( window.innerWidth, window.innerHeight );
-renderer.setAnimationLoop( tick );
-document.body.appendChild( renderer.domElement );
-
-let controls = new Controls( camera, renderer.domElement );
+let controls, renderer, scene, camera
 
 function tick( time ) {
   renderer.render( scene, camera );
   controls.update( );
 }
+
 export function render(global: IGlobal) {
+  camera = new THREE.PerspectiveCamera(
+    55,
+    window.innerWidth / window.innerHeight,
+    0.01,
+    10000,
+  );
+  camera.position.set(10, 10, 10);
+
+  scene = new THREE.Scene();
+  renderer = new THREE.WebGLRenderer( { antialias: true, alpha: false } );
+  renderer.setSize( window.innerWidth, window.innerHeight );
+  renderer.setAnimationLoop( tick );
+  document.body.appendChild( renderer.domElement );
+
+  controls = new Controls( camera, renderer.domElement );
+
+  // Render WOM
   if (global.world.background) scene.background = new THREE.Color(global.world.background);
 
   if (global.world.skybox) renderSkybox(scene, global.world.skybox)
@@ -40,9 +43,9 @@ export function render(global: IGlobal) {
     mesh.rotation.y = rectangle.rotation.y
     mesh.rotation.z = rectangle.rotation.z
 
-    mesh.position.x = rectangle.coordinates.x
-    mesh.position.y = rectangle.coordinates.y
-    mesh.position.z = rectangle.coordinates.z
+    mesh.position.x = rectangle.position.x
+    mesh.position.y = rectangle.position.y
+    mesh.position.z = rectangle.position.z
 
     scene.add( mesh );
   }

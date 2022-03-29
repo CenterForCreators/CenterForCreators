@@ -1,0 +1,32 @@
+<world background="#0a95ff">
+<!--    <rectangle-->
+<!--        size="2, 2, 2"-->
+<!--        rotation="1"-->
+<!--        color="#0a95ff"-->
+<!--        physics-->
+<!--    />-->
+<!--    <rectangle-->
+<!--        size="2, 2, 2"-->
+<!--        rotation="1"-->
+<!--        physics-->
+<!--    />-->
+<!--    <rectangle-->
+<!--        size="2, 2, 2"-->
+<!--        rotation="1"-->
+<!--        physics-->
+<!--    />-->
+    <rectangle
+            size="1, 4, 4"
+            rotation="0"
+            color="pink"
+            position="0, 10, 0"
+            physics
+    />
+    <rectangle
+            size="1, 4, 4"
+            rotation="0"
+            color="green"
+            position="0, 10, 0"
+            physics
+    />
+</world>

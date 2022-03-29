@@ -3,7 +3,7 @@ import {isObject, isArray} from '../utils'
 import {parse as parseWorld} from "./xml/World";
 import {parse as parseRectangle} from "./xml/Rectangle";
 import {parse as parseSkybox} from "./xml/Skybox";
-import {IWorld} from "../WOM/wom";
+import {IWorld} from "../world/wom";
 
 // parseWml: Take a World Markup Language string and convert to an initialized World object.
 export function parseWml(worldString: string): IWorld {

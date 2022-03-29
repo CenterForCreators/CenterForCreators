@@ -1,4 +1,4 @@
-import {World, IWorld} from "../../WOM/wom";
+import {World, IWorld} from "../../world/wom";
 
 export function parse (xmlObject): IWorld {
   const wom = new World()

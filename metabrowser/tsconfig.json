@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "module": "commonjs",
+    "esModuleInterop": true,
     "lib": ["es5", "es6", "dom"],
     "allowJs": true,
-    "jsx": "react",
     "sourceMap": true,
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "strictPropertyInitialization": false,
+    "noImplicitAny": false
   }
 }

@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import {Skybox} from "../WOM/Skybox";
+import {Skybox} from "../../world/skybox";
 
 export default function (scene, skybox: Skybox) {
   const {src} = skybox

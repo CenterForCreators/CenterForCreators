@@ -1,4 +1,4 @@
-import {ISkybox, Skybox} from "../../WOM/Skybox";
+import {ISkybox, Skybox} from "../../world/Skybox";
 
 export function parse(xmlObject): ISkybox {
   let skybox = new Skybox()
