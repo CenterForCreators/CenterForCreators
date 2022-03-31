@@ -29,6 +29,7 @@
     "fast-xml-parser": "^4.0.7",
     "lodash": "^4.17.21",
     "query-string": "^7.1.1",
-    "three": "~0.137.4"
+    "three": "~0.137.4",
+    "matter-js": "^0.17.1"
   }
 }
