@@ -1,29 +1,47 @@
 import {IGlobal} from "../../world/wom";
-import { Project, Scene3D, PhysicsLoader, THREE } from 'enable3d'
+import { Project, Scene3D, PhysicsLoader, ThirdPersonControls, THREE } from 'enable3d'
+import * as Elements from "./elements/index";
+import {OrbitControls} from "./controls/OrbitControls";
+import {IControls} from "./controls/Controls";
+import {Player} from "./player";
+import {Background} from "./background";
 
 export function render(global: IGlobal) {
   class MainScene extends Scene3D {
-    private box: any;
+    private controls: IControls;
+    private player: Player;
+    private background: Background;
 
     constructor() {
       super({key: 'MainScene'})
+
+      this.player = new Player(this)
+      this.background = new Background(this, global)
     }
 
     init() {
-      console.log('init')
-
       this.renderer.setPixelRatio(1)
       this.renderer.setSize(window.innerWidth, window.innerHeight)
     }
 
-    preload() {
-      console.log('preload')
+    async preload() {
+      await this.player.preload()
+      await this.background.preload()
     }
 
-    create() {
-
+    async create() {
       // set up scene (light, ground, grid, sky, orbitControls)
-      this.warpSpeed("-orbitControls")
+      // await this.warpSpeed("ground", "light")
+      await this.warpSpeed.apply(this, ["ground", "light"])
+
+      const helper = new THREE.GridHelper( 100, 100, 0xff0000, 0xff0000 );
+      this.scene.add( helper );
+
+
+      this.controls = new OrbitControls(this.camera, this.renderer.domElement)
+
+      this.background.create()
+      await this.player.create()
 
       const resize = () => {
         const newWidth = window.innerWidth
@@ -61,40 +79,36 @@ export function render(global: IGlobal) {
       // this.physics.add.existing(cube)
 
       for (let i = 0; i < global.world.rectangles.length; i++) {
-        let rectangle = global.world.rectangles[i]
-
-
-        const geometry = new THREE.BoxGeometry( rectangle.size.width, rectangle.size.height, rectangle.size.depth );
-        console.log(rectangle.color)
-        const material = new THREE.MeshPhongMaterial({color: rectangle.color});
-        const mesh = new THREE.Mesh( geometry, material );
-
-        mesh.rotation.x = rectangle.rotation.x
-        mesh.rotation.y = rectangle.rotation.y
-        mesh.rotation.z = rectangle.rotation.z
-
-        mesh.position.x = rectangle.position.x
-        mesh.position.y = rectangle.position.y
-        mesh.position.z = rectangle.position.z
-
-        if (rectangle.physics) {
-          // @ts-ignore
-          this.physics.add.existing(mesh)
-        }
-
-        this.scene.add( mesh );
+        const mesh = Elements.Rectangle.create(global.world.rectangles[i], this)
+        global.world.rectangles[i].mesh = mesh
       }
 
-
-
+      for (let i = 0; i < global.world.paintings.length; i++) {
+        Elements.Painting.create(global.world.paintings[i], this)
+      }
     }
 
     update() {
-      // this.box.rotation.x += 0.01
-      // this.box.rotation.y += 0.01
+      this.controls.update()
+      this.player.update()
+
+      // need basic world updates.
     }
   }
 
 
-  PhysicsLoader('/assets/ammo', () => new Project({ scenes: [MainScene], antialias: true }))
+  PhysicsLoader('/assets/ammo', () => {
+    new Project({ scenes: [MainScene], antialias: true })
+
+    // @ts-ignore
+    window.metabrowser = global
+
+    // insert global scripts
+    global.scripts.forEach((script) => {
+      var domScript = document.createElement('script');
+      domScript.innerText = script["#text"]
+      document.body.appendChild(domScript);
+    })
+
+  })
 }

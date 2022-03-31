@@ -1,8 +1,7 @@
 <world background="#0a95ff">
-    <plane id="ground" color="#0f0"/>
-    <rectangle
-        size="5, 5, 5"
-        rotation="0"
-        coordinates="0, 0"
-    />
+  <rectangle
+      size="5, 5, 5"
+      rotation="0"
+      coordinates="0, 0"
+  />
 </world>

@@ -30,8 +30,6 @@ export function render(global: IGlobal) {
   // Render WOM
   if (global.world.background) scene.background = new THREE.Color(global.world.background);
 
-  if (global.world.skybox) renderSkybox(scene, global.world.skybox)
-  
   for (let i = 0; i < global.world.rectangles.length; i++) {
     let rectangle = global.world.rectangles[i]
 

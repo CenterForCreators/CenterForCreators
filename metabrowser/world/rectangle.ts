@@ -7,6 +7,7 @@ export interface IRectangle extends Element {
   physics: boolean;
   color: string;
   type: "Rectangle";
+  mesh: any
 }
 
 export class Rectangle implements IRectangle {
@@ -16,4 +17,5 @@ export class Rectangle implements IRectangle {
   physics: boolean = false
   color: ""
   type: "Rectangle"
+  mesh: null
 }

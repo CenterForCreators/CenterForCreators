@@ -1,0 +1,20 @@
+<world background="#0a95ff">
+  <painting
+    src="/assets/img/painting.png"
+    size="15, 5"
+    position="0,2.5,0"
+    physics
+  />
+  <painting
+    src="/assets/img/painting.png"
+    size="5, 3"
+    position="1,2.5,1"
+    physics
+  />
+  <rectangle
+    size="2, 2, 2"
+    rotation="1"
+    color="pink"
+    physics="true"
+  />
+</world>

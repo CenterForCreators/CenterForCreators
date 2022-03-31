@@ -16,7 +16,9 @@ import {Global} from "./world/wom";
   const res = await fetch(`examples/${config.example}.wml`)
   const wml = await res.text()
   let global = new Global()
-  global.world = parseWml(wml)
+  const [world, scripts] = parseWml(wml)
+  global.world = world
+  global.scripts = scripts
 
   render(global)
 })()

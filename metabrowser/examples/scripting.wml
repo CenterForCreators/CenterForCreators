@@ -1,0 +1,51 @@
+<world>
+  <rectangle
+    position="0,1,0"
+    size="1,1,1"
+    color="red"
+    physics
+  />
+  <rectangle
+    position="0,1,0"
+    size="1,1,1"
+    color="blue"
+    physics
+  />
+  <rectangle
+    position="0,1,0"
+    size="1,1,1"
+    color="green"
+    physics
+  />
+  <rectangle
+    position="0,1,0"
+    size="10,10,10"
+    color="red"
+    physics
+  />
+  <rectangle
+    position="0,1,0"
+    size="1,1,1"
+    color="blue"
+    physics
+  />
+  <rectangle
+    position="0,1,0"
+    size="1,1,1"
+    color="pink"
+    physics
+  />
+  <script type="text/javascript">
+    console.log("wow");
+    console.log(metabrowser);
+
+    const box = metabrowser.getElementById("mybox");
+
+    setInterval(() => {
+      metabrowser.world.rectangles.forEach((rectangle) => {
+        rectangle.mesh.body.setAngularVelocity(10,0,0);
+      })
+    }, 500);
+
+  </script>
+</world>

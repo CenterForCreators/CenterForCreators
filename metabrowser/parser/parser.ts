@@ -2,11 +2,11 @@ import {XMLParser} from 'fast-xml-parser'
 import {isObject, isArray} from '../utils'
 import {parse as parseWorld} from "./xml/World";
 import {parse as parseRectangle} from "./xml/Rectangle";
-import {parse as parseSkybox} from "./xml/Skybox";
+import {parse as parsePainting} from "./xml/Painting";
 import {IWorld} from "../world/wom";
 
 // parseWml: Take a World Markup Language string and convert to an initialized World object.
-export function parseWml(worldString: string): IWorld {
+export function parseWml(worldString: string): [IWorld, Array<any>] {
   const parser = new XMLParser({
     ignoreAttributes : false,
     allowBooleanAttributes: true,
@@ -34,10 +34,32 @@ export function parseWml(worldString: string): IWorld {
     world.rectangles.push(parseRectangle(xmlObject))
   }
 
-  // skybox
-  if (isObject(worldXml.skybox)) {
-    world.skybox = parseSkybox(worldXml.skybox)
+  // paintings
+  let xmlPaintings = []
+
+  if (isObject(worldXml.painting)) {
+    xmlPaintings = [worldXml.painting]
   }
 
-  return world
+  if (isArray(worldXml.painting)) {
+    xmlPaintings = worldXml.painting
+  }
+
+  for (let i = 0; i < xmlPaintings.length; i++) {
+    let xmlObject = xmlPaintings[i]
+    world.paintings.push(parsePainting(xmlObject))
+  }
+
+  // scripts
+  let scripts = []
+
+  if (isObject(worldXml.script)) {
+    scripts = [worldXml.script]
+  }
+
+  if (isArray(worldXml.painting)) {
+    scripts = worldXml.script
+  }
+
+  return [world, scripts]
 }

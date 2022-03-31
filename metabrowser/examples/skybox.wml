@@ -1,0 +1,106 @@
+<world
+  skybox="/assets/img/painting.png"
+>
+  <rectangle
+    size="1, 1, 1"
+    rotation="0"
+    color="red"
+    physics
+  />
+  <rectangle
+    size="1, 1, 1"
+    rotation="0"
+    color="red"
+    physics
+  />
+  <rectangle
+    size="1, 1, 1"
+    rotation="0"
+    color="red"
+    physics
+  />
+  <rectangle
+    size="1, 1, 1"
+    rotation="0"
+    color="red"
+    physics
+  />
+  <rectangle
+    size="1, 1, 1"
+    rotation="0"
+    color="red"
+    physics
+  />
+  <rectangle
+    size="1, 1, 1"
+    rotation="0"
+    color="red"
+    physics
+  />
+  <rectangle
+    size="1, 1, 1"
+    rotation="0"
+    color="red"
+    physics
+  />
+  <rectangle
+    size="1, 1, 1"
+    rotation="0"
+    color="red"
+    physics
+  />
+  <rectangle
+    size="1, 1, 1"
+    rotation="0"
+    color="red"
+    physics
+  />
+  <rectangle
+    size="1, 1, 1"
+    rotation="0"
+    color="red"
+    physics
+  />
+  <rectangle
+    size="1, 1, 1"
+    rotation="0"
+    color="red"
+    physics
+  />
+  <rectangle
+    size="1, 1, 1"
+    rotation="0"
+    color="red"
+    physics
+  />
+  <rectangle
+    size="1, 1, 1"
+    rotation="0"
+    color="red"
+    physics
+  />
+  <rectangle
+    size="1, 1, 1"
+    rotation="0"
+    color="red"
+    physics
+  />
+  <rectangle
+    size="1, 1, 1"
+    rotation="0"
+    color="red"
+    physics
+  />
+  <rectangle
+    size="1, 1, 1"
+    rotation="0"
+    color="red"
+    physics
+  />
+  <script type="text/javascript">
+    setInterval(() => {
+      metabrowser.world.rectangles.forEach((rectangle) => {
+      rectangle.mesh.body.setAngularVelocity(10,0,0);
+    }) }, 500);
+  </script>
+</world>
