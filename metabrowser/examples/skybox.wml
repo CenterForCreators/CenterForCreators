@@ -3,104 +3,78 @@
 >
   <rectangle
     size="1, 1, 1"
+    position="0, 1000, 0"
     rotation="0"
-    color="red"
+    color="green"
     physics
   />
   <rectangle
     size="1, 1, 1"
+    position="0, 1000, 0"
     rotation="0"
-    color="red"
+    color="blue"
     physics
   />
   <rectangle
     size="1, 1, 1"
+    position="0, 1000, 0"
     rotation="0"
-    color="red"
+    color="pink"
     physics
   />
   <rectangle
     size="1, 1, 1"
+    position="0, 1000, 0"
     rotation="0"
-    color="red"
+    color="pink"
     physics
   />
   <rectangle
     size="1, 1, 1"
+    position="0, 1000, 0"
     rotation="0"
-    color="red"
+    color="pink"
     physics
   />
   <rectangle
     size="1, 1, 1"
+    position="0, 1000, 0"
     rotation="0"
-    color="red"
+    color="pink"
     physics
   />
   <rectangle
     size="1, 1, 1"
+    position="0, 1000, 0"
     rotation="0"
-    color="red"
+    color="pink"
     physics
   />
   <rectangle
     size="1, 1, 1"
+    position="0, 1000, 0"
     rotation="0"
-    color="red"
+    color="pink"
     physics
   />
   <rectangle
     size="1, 1, 1"
+    position="0, 1000, 0"
     rotation="0"
-    color="red"
+    color="blue"
     physics
   />
   <rectangle
     size="1, 1, 1"
+    position="0, 1000, 0"
     rotation="0"
-    color="red"
-    physics
-  />
-  <rectangle
-    size="1, 1, 1"
-    rotation="0"
-    color="red"
-    physics
-  />
-  <rectangle
-    size="1, 1, 1"
-    rotation="0"
-    color="red"
-    physics
-  />
-  <rectangle
-    size="1, 1, 1"
-    rotation="0"
-    color="red"
-    physics
-  />
-  <rectangle
-    size="1, 1, 1"
-    rotation="0"
-    color="red"
-    physics
-  />
-  <rectangle
-    size="1, 1, 1"
-    rotation="0"
-    color="red"
-    physics
-  />
-  <rectangle
-    size="1, 1, 1"
-    rotation="0"
-    color="red"
+    color="pink"
     physics
   />
   <script type="text/javascript">
     setInterval(() => {
       metabrowser.world.rectangles.forEach((rectangle) => {
-      rectangle.mesh.body.setAngularVelocity(10,0,0);
+      rectangle.mesh.body.setAngularVelocity(Math.random() * 50,Math.random() * 50,Math.random() * 50);
     }) }, 500);
   </script>
 </world>

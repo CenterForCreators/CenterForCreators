@@ -1,6 +1,6 @@
 <world background="#0a95ff">
   <rectangle
-    size="3, 3, 3"
+    size="1, 10, 1"
     rotation="0"
     color="red"
     physics

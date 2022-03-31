@@ -3,12 +3,56 @@
     src="/assets/img/painting.png"
     size="15, 5"
     position="0,2.5,0"
+    color="blue"
     physics
   />
   <painting
     src="/assets/img/painting.png"
     size="5, 3"
     position="1,2.5,1"
+    color="pink"
+    physics
+  />
+  <painting
+    src="/assets/img/painting.png"
+    size="5, 3"
+    position="1,2.5,1"
+    color="pink"
+    physics
+  />
+  <painting
+    src="/assets/img/painting.png"
+    size="5, 3"
+    position="1,2.5,1"
+    color="pink"
+    physics
+  />
+  <painting
+    src="/assets/img/painting.png"
+    size="5, 3"
+    position="1,2.5,1"
+    color="pink"
+    physics
+  />
+  <painting
+    src="/assets/img/painting.png"
+    size="5, 3"
+    position="1,2.5,1"
+    color="pink"
+    physics
+  />
+  <painting
+    src="/assets/img/painting.png"
+    size="5, 3"
+    position="1,2.5,1"
+    color="pink"
+    physics
+  />
+  <painting
+    src="/assets/img/painting.png"
+    size="5, 3"
+    position="1,2.5,1"
+    color="pink"
     physics
   />
   <rectangle

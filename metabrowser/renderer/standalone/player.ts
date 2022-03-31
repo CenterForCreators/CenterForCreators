@@ -42,7 +42,7 @@ export class Player implements IPlayer {
     this.man.rotateY(Math.PI + 0.1) // a hack
     this.man.add(man)
     this.man.rotation.set(0, Math.PI * 1.5, 0)
-    this.man.position.set(0, 5, 0)
+    this.man.position.set(0, 1000, 0)
     // add shadow
     this.man.traverse(child => {
       if (child.isMesh) {
@@ -158,7 +158,7 @@ export class Player implements IPlayer {
       /**
        * Player Turn
        */
-      const speed = 4
+      const speed = 15
       const v3 = new THREE.Vector3()
 
       const rotation = this.scene.camera.getWorldDirection(v3)
