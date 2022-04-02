@@ -8,6 +8,7 @@ export function create(painting: IPainting, project: any) {
   const mesh = new THREE.Mesh(geometry, material);
 
   mesh.receiveShadow = true;
+  mesh.castShadow = true;
   mesh.material.side = THREE.DoubleSide;
 
   mesh.rotation.x = painting.rotation.x
@@ -18,9 +19,12 @@ export function create(painting: IPainting, project: any) {
   mesh.position.y = painting.position.y
   mesh.position.z = painting.position.z
 
+  mesh.castShadow = painting.shadow.cast
+  mesh.receiveShadow = painting.shadow.receive
+
   if (painting.physics) {
     // @ts-ignore
-    project.physics.add.existing(mesh)
+    project.physics.add.existing(mesh, {mass: painting.physics.mass})
   }
 
   // project.scene.add( mesh );

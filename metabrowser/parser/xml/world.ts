@@ -6,5 +6,6 @@ export default function (xmlObject): IWorldProps {
     skybox: xmlObject["@_skybox"],
     grid: !!xmlObject["@_grid"],
     debug: !!xmlObject["@_debug"],
+    dark: !!xmlObject["@_dark"],
   }
 }

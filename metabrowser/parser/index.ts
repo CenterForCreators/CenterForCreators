@@ -1,7 +1,7 @@
 import {XMLParser} from 'fast-xml-parser'
 // import {parse as parseWorld} from "parser/xml/World";
 import {World, IWorld} from "world/wom";
-import {isArray, isObject} from "utils/index";
+import {isArray, isObject, isString} from "utils/index";
 import * as Parsers from 'parser/xml'
 const elTypes = Object.keys(Parsers)
 
@@ -18,7 +18,7 @@ export function parseWml(worldString: string): [IWorld, Array<any>] {
   // parse world root node
   let world = parseWorld(worldXml)
 
-  return [world, []]
+  return [world, []]  // TODO: Add scripts here.
 }
 
 export function parseWorld (xmlObject): IWorld {
@@ -39,9 +39,13 @@ function processNode(node: any, type: string) {
   Object.keys(node).filter((key) => elTypes.includes(key)).forEach((key) => {
     const item = node[key]
 
-    if (isObject(item)) {
+    if (isString(item)) {
+      children = [...children, {type: key}]
+    }
+    else if (isObject(item)) {
       children = [...children, {...item, ...{type: key}}]
-    } else if (isArray(item)) {
+    }
+    else if (isArray(item)) {
       children = [...children, ...item.map((g) => ({...g, type: key}))]
     }
   })

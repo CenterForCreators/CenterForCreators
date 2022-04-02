@@ -19,3 +19,12 @@ export interface Rotation {
   y: number;
   z: number;
 }
+
+export interface Physics {
+  mass: number;
+}
+
+export interface Shadow {
+  cast: boolean
+  receive: boolean
+}

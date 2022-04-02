@@ -14,4 +14,27 @@ export function create(worldProps: IWorldProps, project: any) {
   if (worldProps.debug) {
     project.physics.debug.enable()
   }
+
+  if (worldProps.skybox) {
+    const src = worldProps.skybox
+
+    // build urls for each side of the skybox.
+    const skyboxImagepaths = [
+      src, src, src, src, src, src
+    ]
+
+    const materialArray = skyboxImagepaths.map(image => {
+      let texture = new THREE.TextureLoader().load(image);
+      return new THREE.MeshBasicMaterial({ map: texture, side: THREE.BackSide });
+    });
+
+    const skyboxGeo = new THREE.BoxGeometry(1000, 1000, 1000);
+    const mesh = new THREE.Mesh(skyboxGeo, materialArray);
+
+    project.scene.add( mesh );
+  }
+
+  if (!worldProps.dark) {
+    project.warpSpeed("light")
+  }
 }

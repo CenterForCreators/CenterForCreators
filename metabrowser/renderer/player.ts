@@ -49,7 +49,7 @@ export class Player implements IPlayer {
     // add shadow
     this.man.traverse(child => {
       if (child.isMesh) {
-        child.castShadow = child.receiveShadow = false
+        child.castShadow = child.receiveShadow = true
         // https://discourse.threejs.org/t/cant-export-material-from-blender-gltf/12258
         child.material.roughness = 1
         child.material.metalness = 0

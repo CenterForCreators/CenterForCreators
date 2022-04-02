@@ -1,5 +1,6 @@
 import {IPainting, Painting} from "world/elements/painting";
 import {parseXmlTriplet} from "parser/util";
+import {parsePhysics, parseShadow} from "parser/xml/attributes";
 
 export default function(xmlObject): IPainting {
   let object = new Painting()
@@ -25,9 +26,8 @@ export default function(xmlObject): IPainting {
     object.rotation.z = z ? parseFloat(z) : 0
   }
 
-  if (xmlObject["@_physics"]) {
-    object.physics = xmlObject["@_physics"]
-  }
+  object.physics = parsePhysics(xmlObject)
+  object.shadow = parseShadow(xmlObject)
 
   if (xmlObject["@_color"]) {
     object.color = xmlObject["@_color"]

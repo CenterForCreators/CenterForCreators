@@ -14,11 +14,12 @@ export function create(rectangle: IRectangle, project: any): any {
   mesh.position.y = rectangle.position.y
   mesh.position.z = rectangle.position.z
 
+  mesh.castShadow = rectangle.shadow.cast
+  mesh.receiveShadow = rectangle.shadow.receive
+
   if (rectangle.physics) {
-    // @ts-ignore
-    project.physics.add.existing(mesh)
+    project.physics.add.existing(mesh, {mass: rectangle.physics.mass})
   }
 
-  // project.scene.add( mesh );
   return mesh
 }

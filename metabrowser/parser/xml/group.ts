@@ -1,5 +1,6 @@
 import {parseXmlTriplet} from "parser/util";
 import {Group, IGroup} from "world/elements/group";
+import {parsePhysics} from "parser/xml/attributes";
 
 export default function(xmlObject): IGroup {
   let object = new Group()
@@ -11,11 +12,11 @@ export default function(xmlObject): IGroup {
     object.position.z = z ? parseFloat(z) : 0
   }
 
-  if (xmlObject["@_size"]) {
-    const [width, height, depth] = parseXmlTriplet(xmlObject["@_size"])
-    object.size.width = width ? parseFloat(width) : 0
-    object.size.height = height ? parseFloat(height) : 0
-    object.size.depth = depth ? parseFloat(depth) : 0
+  if (xmlObject["@_scale"]) {
+    const [x, y, z] = parseXmlTriplet(xmlObject["@_scale"])
+    object.scale.x = x ? parseFloat(x) : 1
+    object.scale.y = y ? parseFloat(y) : 1
+    object.scale.z = z ? parseFloat(z) : 1
   }
 
   if (xmlObject["@_rotation"]) {
@@ -25,9 +26,7 @@ export default function(xmlObject): IGroup {
     object.rotation.z = z ? parseFloat(z) : 0
   }
 
-  if (xmlObject["@_physics"]) {
-    object.physics = xmlObject["@_physics"]
-  }
+  object.physics = parsePhysics(xmlObject)
 
   return object
 }

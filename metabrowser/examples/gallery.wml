@@ -1,5 +1,5 @@
-<world background="white">
-  <group rotation="0,0,0" position="-12,.5,-10" size="2,2,2">
+<world background="black" debug>
+  <group rotation="0,0,0" position="-12,1,-10" scale="3,3,3" physics="1">
     <rectangle
       size="5, .5, .5"
       position="0, 8.25, 0"
@@ -26,112 +26,20 @@
       color="black"
     />
   </group>
-  <group rotation="0,0,0" position="-6,.5,-10" size="2,2,2">
-    <rectangle
-      size="5, .5, .5"
-      position="0, 8.25, 0"
-      color="black"
-    />
-    <rectangle
-      size=".5, 9, .5"
-      position="-2.75, 4, 0"
-      color="black"
-    />
-    <painting
-      src="/assets/img/asian-calligraphy/strength.png"
-      size="5, 8"
-      position="0,4,0"
-    />
-    <rectangle
-      size=".5, 9, .5"
-      position="2.5, 4, 0"
-      color="black"
-    />
-    <rectangle
-      size="5, .5, .5"
-      position="0, -0.25, 0"
-      color="black"
+  <group position="5,4.5,0" physics="0" scale="3,3,3">
+    <spotlight intensity="1.5" color="red" position="0,3,-5" debug="blue"/>
+    <painting src="/assets/img/asian-calligraphy/city_gate.jpeg"
+              size="4, 3"
+              position="0,0,0"
+              shadow
     />
   </group>
-  <group rotation="0,0,0" position="0,.5,-10" size="2,2,2">
-    <rectangle
-      size="5, .5, .5"
-      position="0, 8.25, 0"
-      color="black"
-    />
-    <rectangle
-      size=".5, 9, .5"
-      position="-2.75, 4, 0"
-      color="black"
-    />
-    <painting
-      src="/assets/img/asian-calligraphy/strength.png"
-      size="5, 8"
-      position="0,4,0"
-    />
-    <rectangle
-      size=".5, 9, .5"
-      position="2.5, 4, 0"
-      color="black"
-    />
-    <rectangle
-      size="5, .5, .5"
-      position="0, -0.25, 0"
-      color="black"
-    />
-  </group>
-  <group rotation="0,0,0" position="6,.5,-10" size="2,2,2">
-    <rectangle
-      size="5, .5, .5"
-      position="0, 8.25, 0"
-      color="black"
-    />
-    <rectangle
-      size=".5, 9, .5"
-      position="-2.75, 4, 0"
-      color="black"
-    />
-    <painting
-      src="/assets/img/asian-calligraphy/strength.png"
-      size="5, 8"
-      position="0,4,0"
-    />
-    <rectangle
-      size=".5, 9, .5"
-      position="2.5, 4, 0"
-      color="black"
-    />
-    <rectangle
-      size="5, .5, .5"
-      position="0, -0.25, 0"
-      color="black"
-    />
-  </group>
-  <group rotation="0,0,0" position="12,.5,-10" size="2,2,2">
-    <rectangle
-      size="5, .5, .5"
-      position="0, 8.25, 0"
-      color="black"
-    />
-    <rectangle
-      size=".5, 9, .5"
-      position="-2.75, 4, 0"
-      color="black"
-    />
-    <painting
-      src="/assets/img/asian-calligraphy/strength.png"
-      size="5, 8"
-      position="0,4,0"
-    />
-    <rectangle
-      size=".5, 9, .5"
-      position="2.5, 4, 0"
-      color="black"
-    />
-    <rectangle
-      size="5, .5, .5"
-      position="0, -0.25, 0"
-      color="black"
+  <group position="-5,0,-5" physics="0" rotation="0,1.6,0">
+    <spotlight intensity="1" color="white" position="0,3,5"/>
+    <painting src="/assets/img/asian-calligraphy/city_gate.jpeg"
+              size="4, 3"
+              position="0,1.5,0"
+              shadow
     />
   </group>
 </world>

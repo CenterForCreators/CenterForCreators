@@ -1,7 +1,0 @@
-<world background="#0a95ff">
-  <rectangle
-      size="5, 5, 5"
-      rotation="0"
-      coordinates="0, 0"
-  />
-</world>

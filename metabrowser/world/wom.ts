@@ -23,6 +23,7 @@ export interface IWorldProps {
   skybox: string;
   grid: boolean;
   debug: boolean;
+  dark: boolean;
 }
 
 // The world object model, equivalent to "window.document".

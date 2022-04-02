@@ -4,5 +4,6 @@
     rotation="0"
     color="red"
     physics
+    shadow
   />
 </world>
