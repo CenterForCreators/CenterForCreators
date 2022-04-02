@@ -18,6 +18,7 @@ export class Player implements IPlayer {
   private animationMixers: any;
   private controls: any;
   private keys: { a: { isDown: boolean }; s: { isDown: boolean }; d: { isDown: boolean }; w: { isDown: boolean }; space: { isDown: boolean } };
+  private pointer: any;
 
   constructor(scene: any) {
     this.self = this
@@ -27,6 +28,8 @@ export class Player implements IPlayer {
 
     this.moveTop = 0
     this.moveRight = 0
+
+    this.pointer = new THREE.Vector2();
   }
 
   async preload(): Promise<void> {
@@ -42,7 +45,7 @@ export class Player implements IPlayer {
     this.man.rotateY(Math.PI + 0.1) // a hack
     this.man.add(man)
     this.man.rotation.set(0, Math.PI * 1.5, 0)
-    this.man.position.set(0, 1000, 0)
+    this.man.position.set(0, 0, 0)
     // add shadow
     this.man.traverse(child => {
       if (child.isMesh) {
@@ -87,23 +90,21 @@ export class Player implements IPlayer {
      * Add 3rd Person Controls
      */
     this.controls = new ThirdPersonControls(this.scene.camera, this.man, {
-      offset: new THREE.Vector3(0, 1, 0),
-      targetRadius: 3
+      offset: new THREE.Vector3(0, 1.5, 0),
+      targetRadius: 2.5
     })
 
-    // set initial view to 90 deg theta
-    this.controls.theta = 90
+    this.controls.theta = 0
 
     /**
      * Add Pointer Lock and Pointer Drag
      */
     if (!isTouchDevice) {
-      let pl = new PointerLock(this.scene.canvas)
+      // let pl = new PointerLock(this.scene.canvas)
       let pd = new PointerDrag(this.scene.canvas)
       pd.onMove(delta => {
-        if (pl.isLocked()) {
-          this.controls.update(delta.x * 2, delta.y * 2)
-        }
+        if (pd.isPointerDown)
+          this.controls.update(delta.x * 4, delta.y * 4)
       })
     }
 
@@ -125,6 +126,12 @@ export class Player implements IPlayer {
         case 83: // w
           this.keys.s.isDown = isDown
           break
+        case 65: // a
+          this.keys.a.isDown = isDown
+          break
+        case 68: // d
+          this.keys.d.isDown = isDown
+          break
         case 38: // arrow up
           this.keys.w.isDown = isDown
           break
@@ -136,6 +143,13 @@ export class Player implements IPlayer {
 
     document.addEventListener('keydown', e => press(e, true))
     document.addEventListener('keyup', e => press(e, false))
+    window.addEventListener( 'pointermove', e => this.pointerMove(e));
+
+  }
+  
+  pointerMove(event) {
+    this.pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+    this.pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
   }
 
   jump() {
@@ -145,8 +159,8 @@ export class Player implements IPlayer {
     setTimeout(() => {
       this.canJump = true
       this.man.animation.play('idle')
-    }, 450)
-    this.man.body.applyForceY(6)
+    }, 500)
+    this.man.body.applyForceY(5)
   }
 
   update() {
@@ -154,15 +168,17 @@ export class Player implements IPlayer {
       /**
        * Update Controls
        */
-      this.controls.update(this.moveRight * 2, -this.moveTop * 2)
+      this.controls.update(this.moveRight * 10, -this.moveTop * 10)
       /**
        * Player Turn
        */
-      const speed = 15
+      const speed = 6
+      const strafeSpeed = 4
       const v3 = new THREE.Vector3()
 
       const rotation = this.scene.camera.getWorldDirection(v3)
       const theta = Math.atan2(rotation.x, rotation.z)
+
       const rotationMan = this.man.getWorldDirection(v3)
       const thetaMan = Math.atan2(rotationMan.x, rotationMan.z)
       this.man.body.setAngularVelocityY(0)
@@ -171,6 +187,7 @@ export class Player implements IPlayer {
       let rotationSpeed = isTouchDevice ? 2 : 4
       let d = Math.PI / 24
 
+      // adjust rotation so camera matches the player's rotation.
       if (l > d) {
         if (l > Math.PI - d) rotationSpeed *= -1
         if (theta < thetaMan) rotationSpeed *= -1
@@ -180,25 +197,65 @@ export class Player implements IPlayer {
       /**
        * Player Move
        */
+
+      let x = this.man.body.velocity.x
+      let y = this.man.body.velocity.y
+      let z = this.man.body.velocity.z
+
       if (this.keys.w.isDown || this.move) {
         if (this.man.animation.current === 'idle' && this.canJump) this.man.animation.play('run')
 
-        const x = Math.sin(theta) * speed,
-          y = this.man.body.velocity.y,
-          z = Math.cos(theta) * speed
-
-        this.man.body.setVelocity(x, y, z)
+        this.man.body.setVelocity(
+          Math.sin(theta) * speed,
+          y,
+          Math.cos(theta) * speed
+        )
       } else {
         if (this.man.animation.current === 'run' && this.canJump) this.man.animation.play('idle')
       }
 
       if (this.keys.s.isDown) {
-        const x = Math.sin(theta) * (speed * -1),
-          y = this.man.body.velocity.y,
-          z = Math.cos(theta) * (speed * -1)
-
-        this.man.body.setVelocity(x, y, z)
+        this.man.body.setVelocity(
+          Math.sin(theta) * (speed * -1),
+          y,
+          Math.cos(theta) * (speed * -1)
+        )
       }
+
+      if (this.keys.a.isDown) {
+        this.man.body.setVelocity(
+          Math.cos(theta) * strafeSpeed,
+          y,
+          Math.sin(theta) * (strafeSpeed * -1),
+        )
+      }
+      if (this.keys.d.isDown) {
+        this.man.body.setVelocity(
+          Math.cos(theta) * (strafeSpeed * -1),
+          y,
+          Math.sin(theta) * strafeSpeed,
+        )
+      }
+
+      if (!this.keys.w.isDown
+        && !this.keys.s.isDown
+        && !this.keys.a.isDown
+        && !this.keys.d.isDown
+      ) {
+        this.man.body.setVelocity(
+          0,
+          y,
+          0
+        )
+      }
+
+      // if (y < 1 && y > -1) {
+      //   console.log("CAN")
+      //   // this.canJump = true
+      // } else {
+      //   console.log("CANNOT")
+      //   // this.canJump = true
+      // }
 
       /**
        * Player Jump
@@ -206,6 +263,7 @@ export class Player implements IPlayer {
       if (this.keys.space.isDown && this.canJump) {
         this.jump()
       }
+
     }
   }
 }

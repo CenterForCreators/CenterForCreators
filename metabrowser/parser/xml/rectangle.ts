@@ -1,7 +1,7 @@
-import {IRectangle, Rectangle} from "../../world/rectangle";
-import {parseXmlTriplet} from "../util";
+import {IRectangle, Rectangle} from "world/elements/rectangle";
+import {parseXmlTriplet} from "parser/util";
 
-export function parse(xmlObject): IRectangle {
+export default function (xmlObject): IRectangle {
   let rectangle = new Rectangle()
 
   if (xmlObject["@_position"]) {

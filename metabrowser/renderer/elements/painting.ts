@@ -1,5 +1,5 @@
 import {THREE} from "enable3d";
-import {IPainting} from "../../../world/painting";
+import {IPainting} from "world/elements/painting";
 
 export function create(painting: IPainting, project: any) {
   const texture = new THREE.TextureLoader().load( painting.src );
@@ -23,5 +23,6 @@ export function create(painting: IPainting, project: any) {
     project.physics.add.existing(mesh)
   }
 
-  project.scene.add( mesh );
+  // project.scene.add( mesh );
+  return mesh
 }

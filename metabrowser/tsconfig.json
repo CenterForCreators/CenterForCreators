@@ -8,6 +8,13 @@
     "sourceMap": true,
     "downlevelIteration": true,
     "strictPropertyInitialization": false,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "baseUrl": "./",
+    "paths": {
+      "renderer/*": ["renderer/*"],
+      "parser/*": ["parser/*"],
+      "world/*": ["world/*"],
+      "utils/*": ["utils/*"]
+    }
   }
 }

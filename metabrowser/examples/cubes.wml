@@ -1,9 +1,8 @@
 <world background="#0a95ff">
   <rectangle
-    size="1, 10, 1"
+    size="1, 5, 1"
     rotation="0"
     color="red"
     physics
   />
-
 </world>

@@ -1,7 +1,7 @@
-import {IPainting, Painting} from "../../world/painting";
-import {parseXmlTriplet} from "../util";
+import {IPainting, Painting} from "world/elements/painting";
+import {parseXmlTriplet} from "parser/util";
 
-export function parse(xmlObject): IPainting {
+export default function(xmlObject): IPainting {
   let object = new Painting()
 
   if (xmlObject["@_position"]) {

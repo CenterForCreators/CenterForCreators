@@ -27,9 +27,14 @@
     "@enable3d/three-graphics": "^0.25.1",
     "enable3d": "^0.25.1",
     "fast-xml-parser": "^4.0.7",
+    "i": "^0.3.7",
     "lodash": "^4.17.21",
+    "matter-js": "^0.17.1",
+    "npm": "^8.6.0",
     "query-string": "^7.1.1",
     "three": "~0.137.4",
-    "matter-js": "^0.17.1"
+    "three-css3drenderer": "^1.0.1",
+    "threex.domevents": "^1.0.1",
+    "tree-crawl": "^1.1.0"
   }
 }

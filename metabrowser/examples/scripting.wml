@@ -18,8 +18,8 @@
     physics
   />
   <rectangle
-    position="0,1,0"
-    size="10,10,10"
+    position="0,20,0"
+    size="3,3,3"
     color="red"
     physics
   />
@@ -36,16 +36,16 @@
     physics
   />
   <script type="text/javascript">
-    console.log("wow");
-    console.log(metabrowser);
-
-    const box = metabrowser.getElementById("mybox");
-
     setInterval(() => {
       metabrowser.world.rectangles.forEach((rectangle) => {
-        rectangle.mesh.body.setAngularVelocity(10,0,0);
+        if (Math.random() > .33) {
+          rectangle.mesh.body.setAngularVelocity(10,0,0);
+        } else if (Math.random() > .66) {
+          rectangle.mesh.body.setAngularVelocity(0,10,0);
+        } else {
+          rectangle.mesh.body.setAngularVelocity(0,0,10);
+        }
       })
-    }, 500);
-
+    }, 100);
   </script>
 </world>

@@ -1,4 +1,4 @@
-import {IRectangle} from "../../../world/rectangle";
+import {IRectangle} from "world/elements/rectangle";
 import {THREE} from "enable3d";
 
 export function create(rectangle: IRectangle, project: any): any {
@@ -19,8 +19,6 @@ export function create(rectangle: IRectangle, project: any): any {
     project.physics.add.existing(mesh)
   }
 
-  console.log(mesh)
-
-  project.scene.add( mesh );
+  // project.scene.add( mesh );
   return mesh
 }

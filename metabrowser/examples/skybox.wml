@@ -2,79 +2,9 @@
   skybox="/assets/img/painting.png"
 >
   <rectangle
-    size="1, 1, 1"
-    position="0, 1000, 0"
-    rotation="0"
-    color="green"
-    physics
-  />
-  <rectangle
-    size="1, 1, 1"
-    position="0, 1000, 0"
-    rotation="0"
+    size="5, .1, 5"
+    position=".5, .5, .5"
     color="blue"
     physics
   />
-  <rectangle
-    size="1, 1, 1"
-    position="0, 1000, 0"
-    rotation="0"
-    color="pink"
-    physics
-  />
-  <rectangle
-    size="1, 1, 1"
-    position="0, 1000, 0"
-    rotation="0"
-    color="pink"
-    physics
-  />
-  <rectangle
-    size="1, 1, 1"
-    position="0, 1000, 0"
-    rotation="0"
-    color="pink"
-    physics
-  />
-  <rectangle
-    size="1, 1, 1"
-    position="0, 1000, 0"
-    rotation="0"
-    color="pink"
-    physics
-  />
-  <rectangle
-    size="1, 1, 1"
-    position="0, 1000, 0"
-    rotation="0"
-    color="pink"
-    physics
-  />
-  <rectangle
-    size="1, 1, 1"
-    position="0, 1000, 0"
-    rotation="0"
-    color="pink"
-    physics
-  />
-  <rectangle
-    size="1, 1, 1"
-    position="0, 1000, 0"
-    rotation="0"
-    color="blue"
-    physics
-  />
-  <rectangle
-    size="1, 1, 1"
-    position="0, 1000, 0"
-    rotation="0"
-    color="pink"
-    physics
-  />
-  <script type="text/javascript">
-    setInterval(() => {
-      metabrowser.world.rectangles.forEach((rectangle) => {
-      rectangle.mesh.body.setAngularVelocity(Math.random() * 50,Math.random() * 50,Math.random() * 50);
-    }) }, 500);
-  </script>
 </world>

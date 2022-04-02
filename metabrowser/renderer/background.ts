@@ -1,13 +1,10 @@
 import {THREE} from "enable3d";
-import {IGlobal} from "../../world/wom";
 
 export interface IBackground {
   create: () => void
-  update: () => void
-  preload: () => void
 }
 
-export class Background implements IBackground{
+export class Background implements IBackground {
   public scene: any;
   public global: any;
   private self: this;
@@ -20,7 +17,6 @@ export class Background implements IBackground{
   }
 
   create(): void {
-
     if (this.global.world.background) this.project.scene.background = new THREE.Color(this.global.world.background);
 
     const src = this.global.world.skybox
@@ -43,9 +39,4 @@ export class Background implements IBackground{
     // this.project.scene.add(_skybox)
   }
 
-  async preload(): Promise<void> {
-  }
-
-  update(): void {
-  }
 }
