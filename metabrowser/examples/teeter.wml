@@ -1,0 +1,24 @@
+<world
+  skybox="/assets/img/painting.png"
+  grid
+>
+  <rectangle
+    size="16, 10, 2"
+    position="0, .3, 0"
+    color="pink"
+    physics
+  />
+  <rectangle
+    size="3, 1, 100"
+    position="0, 10, 0"
+    color="red"
+    physics
+  />
+  <rectangle
+    size="10, 10, 10"
+    position="0, 200, 15"
+    rotation="2"
+    color="black"
+    physics="1000"
+  />
+</world>

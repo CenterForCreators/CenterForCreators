@@ -44,7 +44,7 @@ export class Player implements IPlayer {
     this.man.name = 'man'
     this.man.rotateY(Math.PI + 0.1) // a hack
     this.man.add(man)
-    this.man.rotation.set(0, Math.PI * 1.5, 0)
+    // this.man.rotation.set(0, Math.PI * 1.5, 0)
     this.man.position.set(0, 0, 0)
     // add shadow
     this.man.traverse(child => {

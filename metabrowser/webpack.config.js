@@ -19,7 +19,7 @@ module.exports = {
     alias: {
       renderer: path.resolve(__dirname, 'renderer/'),
       parser: path.resolve(__dirname, 'parser/'),
-      world: path.resolve(__dirname, 'world/'),
+      elements: path.resolve(__dirname, 'elements/'),
       utils: path.resolve(__dirname, 'utils/'),
     }
   },

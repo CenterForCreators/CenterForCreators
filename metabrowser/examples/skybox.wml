@@ -8,4 +8,33 @@
     color="pink"
     physics
   />
+  <rectangle
+    size="3, 500, 1"
+    position="0,250,0"
+    rotation="0"
+    color="red"
+    physics="1"
+    shadow
+  />
+  <rectangle
+    size="1, 500, 1"
+    rotation="0"
+    color="red"
+    physics
+    shadow
+  />
+  <rectangle
+    size="1, 5, 1"
+    rotation="0"
+    color="red"
+    physics
+    shadow
+  />
+  <rectangle
+    size="1, 5, 1"
+    rotation="0"
+    color="red"
+    physics
+    shadow
+  />
 </world>

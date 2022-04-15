@@ -1,4 +1,4 @@
-import {IGlobal} from "world/wom";
+import {IGlobal} from "elements/world/world";
 import { Project, Scene3D, PhysicsLoader, THREE } from 'enable3d'
 import * as Elements from "renderer/elements/index";
 import {OrbitControls} from "renderer/controls/OrbitControls";
@@ -76,8 +76,8 @@ export function render(global: IGlobal) {
           const mesh = Elements.Rectangle.create(node.props, this)
           node.mesh = mesh
         }
-        if (node.type === "painting") {
-          const mesh = Elements.Painting.create(node.props, this)
+        if (node.type === "image") {
+          const mesh = Elements.Image.create(node.props, this)
           node.mesh = mesh
         }
         if (node.type === "spotlight") {
@@ -101,7 +101,6 @@ export function render(global: IGlobal) {
         if (node.type === "world") {
           node.children.forEach((child) => {
             // this.scene.add(child.mesh || child.group)
-
             if (child.mesh) this.scene.add(child.mesh)
             if (child.group) this.scene.add(child.group)
             if (child.light) {

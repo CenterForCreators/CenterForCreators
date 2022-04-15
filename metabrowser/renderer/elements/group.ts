@@ -19,7 +19,7 @@ export function create(node: any, project: any) {
 
   if (node.children) {
     node.children.forEach((child) => {
-      node.group.add(child.mesh || child.group || child.spotlight)
+      node.group.add(child.mesh || child.group || child.light)
 
       if (child.mesh) node.group.add(child.mesh)
       if (child.group) node.group.add(child.group)

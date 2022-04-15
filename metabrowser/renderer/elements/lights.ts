@@ -1,6 +1,5 @@
 import {THREE} from "enable3d";
-import {IPainting} from "world/elements/painting";
-import {ISpotlight} from "world/elements/lights";
+import {ISpotlight} from "elements/lights/spotlight";
 
 export function createSpotlight(spotlight: ISpotlight, project: any) {
   let helper

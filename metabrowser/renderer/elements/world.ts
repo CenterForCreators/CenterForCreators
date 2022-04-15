@@ -1,4 +1,4 @@
-import {IWorldProps} from "world/wom";
+import {IWorldProps} from "elements/world/world";
 import {THREE} from "enable3d";
 
 export function create(worldProps: IWorldProps, project: any) {

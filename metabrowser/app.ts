@@ -1,7 +1,7 @@
 const queryString = require('query-string');
-import {parseWml} from "parser";
+import {parse} from "parser/xml";
 import {render} from "renderer";
-import {Global} from "world/wom";
+import {Global} from "elements/world/world";
 
 (async function app() {
   let parsedHash = queryString.parse(location.search);
@@ -11,13 +11,15 @@ import {Global} from "world/wom";
   }
 
   const res = await fetch(`examples/${config.example}.wml`)
-  const wml = await res.text()
+  const xml = await res.text()
 
   let global = new Global()
-  const [world, scripts] = parseWml(wml)
+  const [world, scripts] = parse(xml)
 
   global.world = world
   global.scripts = scripts
+
+  console.log(global)
 
   render(global)
 })()

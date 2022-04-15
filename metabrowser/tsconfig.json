@@ -13,7 +13,7 @@
     "paths": {
       "renderer/*": ["renderer/*"],
       "parser/*": ["parser/*"],
-      "world/*": ["world/*"],
+      "elements/*": ["elements/*"],
       "utils/*": ["utils/*"]
     }
   }

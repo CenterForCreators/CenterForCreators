@@ -1,4 +1,4 @@
-import {IRectangle} from "world/elements/rectangle";
+import {IRectangle} from "elements/shapes/rectangle";
 import {THREE} from "enable3d";
 
 export function create(rectangle: IRectangle, project: any): any {
