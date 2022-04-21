@@ -41,9 +41,9 @@ export function render(global: IGlobal) {
 
       const box = this.physics.add.box({
         x: 0, y: -50.5, z: 0,
-        width: 100,
+        width: 500,
         height: 100.5,
-        depth: 100,
+        depth: 500,
         mass: 0
       }, { phong: { color: 'white' } })
       // box.body.setCollisionFlags(2)
@@ -68,25 +68,25 @@ export function render(global: IGlobal) {
       resize()
 
       // position camera
-      this.camera.position.set(0, 1, 0)
+      this.camera.position.set(0, 3, 10)
 
       // Crawl and build meshes.
       crawl(global.world.contents, (node: any, context) => {
         if (node.type === "rectangle") {
-          const mesh = Elements.Rectangle.create(node.props, this)
+          const mesh = Elements.Rectangle.create(node, this)
           node.mesh = mesh
         }
         if (node.type === "image") {
-          const mesh = Elements.Image.create(node.props, this)
+          const mesh = Elements.Image.create(node, this)
           node.mesh = mesh
         }
         if (node.type === "spotlight") {
-          const [light, helper] = Elements.createSpotlight(node.props, this)
+          const [light, helper] = Elements.createSpotlight(node, this)
           node.light = light
           node.helper = helper
         }
         if (node.type === "world") {
-          Elements.World.create(node.props, this)
+          Elements.World.create(node, this)
         }
       }, {
         getChildren: node => node.children,
@@ -112,8 +112,8 @@ export function render(global: IGlobal) {
               this.scene.add(child.helper.target)
             }
 
-            if (child.group && child.props.physics) {
-              this.physics.add.existing(child.mesh || child.group, {mass: child.props.physics.mass})
+            if (child.group && child.physics) {
+              this.physics.add.existing(child.mesh || child.group, {mass: child.physics.mass})
             }
           })
         }

@@ -3,17 +3,17 @@ import {THREE} from "enable3d";
 export function create(node: any, project: any) {
   const group = new THREE.Group();
 
-  group.rotation.x = node.props.rotation.x
-  group.rotation.y = node.props.rotation.y
-  group.rotation.z = node.props.rotation.z
+  group.rotation.x = node.rotation.x
+  group.rotation.y = node.rotation.y
+  group.rotation.z = node.rotation.z
 
-  group.position.x = node.props.position.x
-  group.position.y = node.props.position.y
-  group.position.z = node.props.position.z
+  group.position.x = node.position.x
+  group.position.y = node.position.y
+  group.position.z = node.position.z
 
-  group.scale.x = node.props.scale.x
-  group.scale.y = node.props.scale.y
-  group.scale.z = node.props.scale.z
+  group.scale.x = node.scale.x
+  group.scale.y = node.scale.y
+  group.scale.z = node.scale.z
 
   node.group = group
 

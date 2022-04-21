@@ -16,19 +16,11 @@ export function parse(worldString: string): [IWorld, Array<any>] {
 
   const wom = new World()
   wom.contents = processNode(worldXml, "world")
-  // parse world root node
-  // let world = parseWorld(worldXml)
 
   return [wom, []]  // TODO: Add scripts here.
 }
 
-export function parseWorld (xmlObject): IWorld {
-  const wom = new World()
-  wom.contents = processNode(xmlObject, "world")
-  return wom
-}
-
-// parse a node and recursively parse it's children.
+// parse a node and recursively parse its children.
 function processNode(node: any, type: string) {
   let children = []
   let props = {}
@@ -58,6 +50,6 @@ function processNode(node: any, type: string) {
   return {
     children,
     type,
-    props
+    ...props
   }
 }
